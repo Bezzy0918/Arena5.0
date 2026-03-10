@@ -115,6 +115,12 @@ def generate_launch_description():
         default_value='False',
         description='Enable debug features'
     )
+    save_data = LaunchArgument(
+    name='save_data',
+    default_value='false',
+    choices=['true', 'false'],
+    description='Enable VLN dataset logging'
+    )
 
     def create_task_generators(
         context: launch.LaunchContext,
@@ -223,6 +229,7 @@ def generate_launch_description():
                     **world.dict,
                     **record_data_dir.dict,
                     **debug.dict,
+                    **save_data.dict,
                     'namespace': namespace,
                     'headless': headlessness,
                     'reference': str(reference),

@@ -15,6 +15,11 @@ def generate_launch_description():
         default_value='debug',
         description='Logging level',
     )
+    save_data = LaunchArgument(
+        name='save_data',
+        default_value='false',
+        description='是否保存VLN数据'
+    )
     return LaunchDescription([
         *ld,
         IncludeLaunchDescription(
@@ -27,6 +32,7 @@ def generate_launch_description():
             ),
             launch_arguments={
                 **log_level.dict,
+                **save_data.dict,
             }.items(),
         )
     ])
